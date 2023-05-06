@@ -1,7 +1,7 @@
-
 from collections import OrderedDict
+
 cookiecutter_string = '''{{ cookiecutter }}'''
-cookiecutter = eval(cookiecutter_string)
+cookiecutter: OrderedDict = eval(cookiecutter_string)
 
 
 project_slug = "{{ cookiecutter.project_slug }}"

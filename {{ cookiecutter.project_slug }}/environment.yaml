@@ -1,0 +1,6 @@
+name: '{{ cookiecutter.project_slug }}'
+dependencies:
+  - python={{ cookiecutter.python_version }}
+  - pip
+  - pip:
+      - -r requirements.txt
