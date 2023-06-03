@@ -1,7 +1,7 @@
 import redis.asyncio as aioredis
 from redis.asyncio import Redis
 
-from src.core.config import settings
+from {{ cookiecutter.project_slug }}.core.config import settings
 
 
 async def get_redis_client() -> Redis:

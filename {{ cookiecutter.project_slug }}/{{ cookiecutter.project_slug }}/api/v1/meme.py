@@ -3,11 +3,11 @@ from typing import List, Optional
 from fastapi import APIRouter, Depends, Query
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.core.enums import SortOrder
-from src.db.session import get_session
-from src.repositories.meme import MemeRepository
-from src.schemas.common import IGetResponseBase
-from src.schemas.meme import IMemeRead
+from {{ cookiecutter.project_slug }}.core.enums import SortOrder
+from {{ cookiecutter.project_slug }}.db.session import get_session
+from {{ cookiecutter.project_slug }}.repositories.meme import MemeRepository
+from {{ cookiecutter.project_slug }}.schemas.common import IGetResponseBase
+from {{ cookiecutter.project_slug }}.schemas.meme import IMemeRead
 
 
 router = APIRouter()

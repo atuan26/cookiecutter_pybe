@@ -5,10 +5,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi_cache import FastAPICache
 from fastapi_cache.backends.redis import RedisBackend
 
-from src.api import routes
-from src.api.deps import get_redis_client
-from src.core.config import settings
-from src.db.session import add_postgresql_extension
+from {{ cookiecutter.project_slug }}.api import routes
+from {{ cookiecutter.project_slug }}.api.deps import get_redis_client
+from {{ cookiecutter.project_slug }}.core.config import settings
+from {{ cookiecutter.project_slug }}.db.session import add_postgresql_extension
 
 
 logger = logging.getLogger(__name__)
@@ -19,12 +19,10 @@ tags_metadata = [
         "name": "health",
         "description": "Health check for api",
     },
-    {%- if cookiecutter.include_example_api == "yes" %}
     {
         "name": "memes",
         "description": "Fetch all posts from database",
     },
-    {%- endif %}
 ]
 
 app = FastAPI(
@@ -37,9 +35,9 @@ app = FastAPI(
 
 
 async def on_startup() -> None:
-    await add_postgresql_extension()
-    redis_client = await get_redis_client()
-    FastAPICache.init(RedisBackend(redis_client), prefix="fastapi-cache")
+    # await add_postgresql_extension()
+    # redis_client = await get_redis_client()
+    # FastAPICache.init(RedisBackend(redis_client), prefix="fastapi-cache")
     logger.info("FastAPI app running...")
 
 

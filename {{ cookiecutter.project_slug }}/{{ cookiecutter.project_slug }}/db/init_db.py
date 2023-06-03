@@ -1,8 +1,8 @@
 import asyncio
 import logging
 
-from src.db.session import SessionLocal
-from src.models.meme import Meme
+from {{ cookiecutter.project_slug }}.db.session import SessionLocal
+from {{ cookiecutter.project_slug }}.models.meme import Meme
 
 
 logging.basicConfig(level=logging.INFO)

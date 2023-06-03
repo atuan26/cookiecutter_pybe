@@ -11,6 +11,29 @@ project_slug = "{{ cookiecutter.project_slug }}"
 
 
 class PATH:
+    class FW:
+        FASTAPI = [
+            os.path.join(project_slug),
+            os.path.join('alembic'),
+            os.path.join('alembic.ini'),
+        ]
+        DJANGO = [
+            os.path.join("apps"),
+            os.path.join("config"),
+            os.path.join("example"),
+            os.path.join("core"),
+            os.path.join("staticfiles"),
+            os.path.join("manage.py"),
+        ]
+        DJANGO_AND_FASTAPI = [
+            os.path.join("apps"),
+            os.path.join("polls"),
+            os.path.join("mysite"),
+            os.path.join("staticfiles"),
+            os.path.join("manage.py"),
+        ]
+        ALL_FW = list(set(FASTAPI + DJANGO + DJANGO_AND_FASTAPI))
+
     @classmethod
     def remove(cls, files: list):
         for file in files:
@@ -48,3 +71,10 @@ if cookiecutter['setup_env'] == 'y':
     elif cookiecutter['deps_manager'] == 'conda':
         create_conda_env()
         PATH.remove(["requirements.txt", "pyproject.toml"])
+
+if cookiecutter['framework'] == 'Django':
+    PATH.remove(list(set(PATH.FW.ALL_FW) - set(PATH.FW.DJANGO)))
+elif cookiecutter['framework'] == 'FastAPI':
+    PATH.remove(list(set(PATH.FW.ALL_FW) - set(PATH.FW.FASTAPI)))
+elif cookiecutter['framework'] == 'Django + FastAPI':
+    PATH.remove(list(set(PATH.FW.ALL_FW) - set(PATH.FW.DJANGO_AND_FASTAPI)))

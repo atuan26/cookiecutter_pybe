@@ -1,4 +1,4 @@
-FROM python:{{ cookiecutter.py_version}} as base
+FROM python:{{ cookiecutter.python_version}} as base
 
 ARG env
 
@@ -13,7 +13,7 @@ RUN poetry export $(test "${env:-dev}" != "prod" && echo "--with dev") \
     --output requirements.txt \
     --without-hashes
 
-FROM python:{{ cookiecutter.py_version}}
+FROM python:{{ cookiecutter.python_version}}
 
 COPY --from=base /tmp/requirements.txt /code/requirements.txt
 

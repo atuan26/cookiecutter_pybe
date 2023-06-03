@@ -3,7 +3,7 @@ from datetime import datetime, timezone
 from pydantic import BaseConfig
 from sqlmodel import Column, DateTime, Field, SQLModel
 
-from src.models.base import BaseModel
+from {{ cookiecutter.project_slug }}.models.base import BaseModel
 
 
 class MemeBase(SQLModel):

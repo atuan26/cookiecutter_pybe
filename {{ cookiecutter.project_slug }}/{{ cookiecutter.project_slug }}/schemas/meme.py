@@ -1,6 +1,6 @@
 from uuid import UUID
 
-from src.models.meme import MemeBase
+from {{ cookiecutter.project_slug }}.models.meme import MemeBase
 
 
 class IMemeCreate(MemeBase):

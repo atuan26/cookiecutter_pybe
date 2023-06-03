@@ -11,7 +11,7 @@ class Settings(BaseSettings):
     BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = []
     LOG_LEVEL: int = Field(default=logging.INFO, env="LOG_LEVEL")
 
-    VERSION: str = Field(default="", env="VERSION")
+    VERSION: str = Field(default="v1", env="VERSION")
     DEBUG: bool = Field(default=True, env="DEBUG")
 
     POSTGRES_USER: str = Field(default="", env="POSTGRES_USER")
@@ -51,4 +51,4 @@ class Settings(BaseSettings):
         )
 
 
-settings = Settings()
+settings = Settings(_env_file='.env')

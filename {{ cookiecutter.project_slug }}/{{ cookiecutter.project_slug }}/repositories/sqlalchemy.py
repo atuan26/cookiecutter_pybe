@@ -4,7 +4,7 @@ from typing import Any, Generic, List, Optional, Type, TypeVar
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlmodel import SQLModel, select
 
-from src.interfaces.repository import IRepository
+from {{ cookiecutter.project_slug }}.interfaces.repository import IRepository
 
 
 ModelType = TypeVar("ModelType", bound=SQLModel)
@@ -13,7 +13,9 @@ UpdateSchemaType = TypeVar("UpdateSchemaType", bound=SQLModel)
 logger: logging.Logger = logging.getLogger(__name__)
 
 
-class BaseSQLAlchemyRepository(IRepository, Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
+class BaseSQLAlchemyRepository(
+    IRepository, Generic[ModelType, CreateSchemaType, UpdateSchemaType]
+):
     _model: Type[ModelType]
 
     def __init__(self, db: AsyncSession) -> None:
@@ -56,8 +58,12 @@ class BaseSQLAlchemyRepository(IRepository, Generic[ModelType, CreateSchemaType,
 
         return scalar
 
-    async def update(self, obj_current: ModelType, obj_in: UpdateSchemaType) -> ModelType:
-        logger.info(f"Updating [{self._model.__class__.__name__}] object with [{obj_in}]")
+    async def update(
+        self, obj_current: ModelType, obj_in: UpdateSchemaType
+    ) -> ModelType:
+        logger.info(
+            f"Updating [{self._model.__class__.__name__}] object with [{obj_in}]"
+        )
 
         update_data = obj_in.dict(
             exclude_unset=True

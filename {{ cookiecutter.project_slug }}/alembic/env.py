@@ -12,8 +12,8 @@ from sqlmodel import SQLModel
 
 sys.path.append(str(pathlib.Path(__file__).resolve().parents[1]))
 
-from src.core.config import settings  # noqa
-from src.models import *  # noqa
+from {{ cookiecutter.project_slug }}.core.config import settings  # noqa
+from {{ cookiecutter.project_slug }}.models import *  # noqa
 
 
 # this is the Alembic Config object, which provides
@@ -82,7 +82,9 @@ async def run_migrations_online() -> None:
     #         future=True,
     #     )
     # )
-    connectable = AsyncEngine(create_engine(settings.POSTGRES_URL, echo=True, future=True))
+    connectable = AsyncEngine(
+        create_engine(settings.POSTGRES_URL, echo=True, future=True)
+    )
 
     async with connectable.connect() as connection:
         await connection.run_sync(do_run_migrations)
