@@ -2,9 +2,9 @@ from typing import List
 
 from fastapi import APIRouter, Depends
 
-from polls import adapters
-from polls.models import Choice
-from polls.schemas import FastChoice, FastChoices
+from apps.polls import adapters
+from apps.polls.models import Choice
+from apps.polls.schemas import FastChoice, FastChoices
 
 router = APIRouter(prefix="/choice", tags=["choices"])
 

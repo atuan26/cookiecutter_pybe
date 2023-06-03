@@ -2,9 +2,9 @@ from typing import List
 
 from fastapi import APIRouter, Depends
 
-from polls import adapters
-from polls.models import Question
-from polls.schemas import FastQuestion, FastQuestions
+from apps.polls import adapters
+from apps.polls.models import Question
+from apps.polls.schemas import FastQuestion, FastQuestions
 
 router = APIRouter(prefix="/question", tags=["questions"])
 

@@ -12,5 +12,11 @@ greenlet
 Django==4.1.7
 django-environ
 whitenoise==6.4.0
-{% else %}
+{% elif cookiecutter.framework == 'Django + FastAPI' %}
+Django==4.1.7
+django-environ
+whitenoise==6.4.0
+fastapi==0.93.0
+pydantic==1.10.6
+uvicorn==0.21.0
 {% endif %}

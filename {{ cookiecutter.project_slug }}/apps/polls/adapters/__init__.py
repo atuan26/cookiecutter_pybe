@@ -3,7 +3,7 @@ from typing import Type, TypeVar
 from django.db import models
 from fastapi import HTTPException, Path
 
-from polls.models import Choice, Question
+from apps.polls.models import Choice, Question
 
 ModelT = TypeVar("ModelT", bound=models.Model)
 

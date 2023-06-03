@@ -18,17 +18,17 @@ class PATH:
             os.path.join('alembic.ini'),
         ]
         DJANGO = [
-            os.path.join("apps"),
-            os.path.join("config"),
+            os.path.join("apps", "__init__.py"),
             os.path.join("example"),
             os.path.join("core"),
             os.path.join("staticfiles"),
             os.path.join("manage.py"),
         ]
         DJANGO_AND_FASTAPI = [
-            os.path.join("apps"),
+            os.path.join("apps", "__init__.py"),
+            os.path.join("apps", "polls"),
             os.path.join("polls"),
-            os.path.join("mysite"),
+            os.path.join("config"),
             os.path.join("staticfiles"),
             os.path.join("manage.py"),
         ]
