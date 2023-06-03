@@ -16,28 +16,25 @@ PYTHON BACKEND REPOSITORY TEMPLATES
     - [ ] Release History
     - [ ] To-do
 - Framework:
-  - [ ] Django
-  - [ ] FastAPI
-  - [ ] Flask
-  - [ ] Django + FastAPI
-- RESTful API
-  - [ ] Django
+  - [x] Django
     - [ ] django-rest-framework
-    - [ ] django-tastypie -Creating delicious APIs for Django apps.
-  - [ ] fastapi
+    - [ ] django-tastypie - Creating delicious APIs for Django apps.
+  - [x] FastAPI
+  - [x] Django + FastAPI
   - [ ] Flask
     - [ ] eve-REST API framework powered by Flask, MongoDB and good intentions.
     - [ ] flask-api-Browsable Web APIs for Flask.
     - [ ] flask-restful-Quickly building REST APIs for Flask.
   - [ ] Pyramid
     - [ ] cornice-A RESTful framework for Pyramid.
-  - [ ] Framework agnostic
+  - [ ] Other
     - [ ] apistar-A smart Web API framework, designed for Python 3.
     - [ ] falcon-A high-performance framework for building cloud APIs and web app backends.
     - [ ] hug-A Python 3 framework for cleanly exposing APIs.
     - [ ] sandman2-Automated REST APIs for existing database-driven systems.
     - [ ] sanic-A Python 3.6+ web server and web framework that's written to go fast.
     - [ ] vibora-Fast, efficient and asynchronous Web framework inspired by Flask.
+- [ ] Env file stuff
 - Package Management:
   - [x] pip
     - [x] venv
