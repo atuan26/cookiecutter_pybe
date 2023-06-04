@@ -8,15 +8,15 @@ redis==4.5.5
 uvicorn==0.21.0
 asyncpg==0.26.0
 greenlet
-{% elif cookiecutter.framework == 'Django' %}
+{% else %}
 Django==4.1.7
-django-environ
-whitenoise==6.4.0
-{% elif cookiecutter.framework == 'Django + FastAPI' %}
-Django==4.1.7
-django-environ
-whitenoise==6.4.0
+django-environ==0.10.0
+dj_database_url==2.0.0
+# whitenoise==6.4.0
+{% if cookiecutter.framework == 'Django + FastAPI' %}
 fastapi==0.93.0
 pydantic==1.10.6
 uvicorn==0.21.0
+{% elif cookiecutter.framework == 'Django' %}
+{% endif %}
 {% endif %}
