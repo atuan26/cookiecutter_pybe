@@ -6,5 +6,6 @@
   "email": "user@example.com",
   "framework": ["Django + FastAPI", "Django", "FastAPI", "Flask"],
   "deps_manager": ["None", "poetry", "pip", "conda", "other"],
-  "setup_env": ["n", "y"]
+  "setup_env": ["n", "y"],
+  "_copy_without_render": ["staticfiles/*"]
 }
