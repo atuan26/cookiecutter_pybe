@@ -19,28 +19,31 @@ class PATH:
         ]
         DJANGO = [
             os.path.join("apps", "__init__.py"),
-            os.path.join("example"),
+            os.path.join("apps", "example"),
+            os.path.join("apps"),
             os.path.join("core"),
+            os.path.join("config"),
             os.path.join("staticfiles"),
-            os.path.join("manage.py"),
         ]
         DJANGO_AND_FASTAPI = [
             os.path.join("apps", "__init__.py"),
             os.path.join("apps", "polls"),
-            os.path.join("polls"),
+            os.path.join("apps"),
             os.path.join("config"),
             os.path.join("staticfiles"),
-            os.path.join("manage.py"),
         ]
         ALL_FW = list(set(FASTAPI + DJANGO + DJANGO_AND_FASTAPI))
 
     @classmethod
     def remove(cls, files: list):
         for file in files:
-            if os.path.isfile(file):
-                os.remove(file)
-            else:
-                shutil.rmtree(file)
+            try:
+                if os.path.isfile(file):
+                    os.remove(file)
+                else:
+                    shutil.rmtree(file)
+            except Exception as e:
+                print(e)
 
 
 def create_venv():
@@ -55,7 +58,10 @@ def create_venv():
 def create_poetry_env():
     command = ['poetry', 'install']
     run(command)
-    run("""cat requirements.txt | grep -E '^[^# ]' | cut -d= -f1 | xargs -n 1 poetry add""", shell=True)
+    run(
+        """cat requirements.txt | grep -E '^[^# ]' | cut -d= -f1 | xargs -n 1 poetry add""",
+        shell=True,
+    )
     # PATH.remove(['environment.yaml', "requirements.txt"])
 
 
@@ -72,6 +78,7 @@ if cookiecutter['setup_env'] == 'y':
         create_venv()
     elif cookiecutter['deps_manager'] == 'conda':
         create_conda_env()
+    shutil.copy('.env.example', '.env')
 
 if cookiecutter['framework'] == 'Django':
     PATH.remove(list(set(PATH.FW.ALL_FW) - set(PATH.FW.DJANGO)))

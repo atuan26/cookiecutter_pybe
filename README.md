@@ -138,3 +138,6 @@ https://github.com/lacion/cookiecutter-golang/blob/main/cookiecutter.json
 
 https://github.com/topics/cookiecutter-template
 
+https://github.com/prompt-toolkit/python-prompt-toolkit
+
+https://github.com/mjhea0/awesome-fastapi#admin
