@@ -19,6 +19,9 @@ DEBUG = env('DEBUG')
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=['*'])
 
 INSTALLED_APPS = [
+{% if cookiecutter.admin_panel == 'django-grappelli' %}
+    "grappelli",
+{% endif %}
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
