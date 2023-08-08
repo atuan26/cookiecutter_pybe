@@ -15,9 +15,18 @@ Including another URLconf
 """
 from django.conf import settings
 from django.conf.urls.static import static
+{% if cookiecutter.admin_panel == 'django-baton' %}
+from baton.autodiscover import admin
+{% else %}
 from django.contrib import admin
-from django.urls import path
+{% endif %}
+from django.urls import include, path
 
 urlpatterns = [
+{% if cookiecutter.admin_panel == 'django-grappelli' %}
+    path('grappelli/', include('grappelli.urls')), # grappelli URLS
+{% elif cookiecutter.admin_panel == 'django-baton' %}
+    path('baton/', include('baton.urls')),
+{% endif %}
     path("admin/", admin.site.urls),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

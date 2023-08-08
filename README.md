@@ -141,3 +141,5 @@ https://github.com/topics/cookiecutter-template
 https://github.com/prompt-toolkit/python-prompt-toolkit
 
 https://github.com/mjhea0/awesome-fastapi#admin
+
+https://github.com/originalankur/awesome-django-admin

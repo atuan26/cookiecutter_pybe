@@ -218,3 +218,4 @@ tags
 /.vscode
 
 {{ cookiecutter.project_slug }}/poetry.lock
+my_awesome_project/*
