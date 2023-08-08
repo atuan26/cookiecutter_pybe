@@ -5,7 +5,12 @@
   "username": "admin",
   "email": "user@example.com",
   "framework": ["Django + FastAPI", "Django", "FastAPI", "Flask"],
-  "admin_panel": ["Django Default", "django-grappelli"],
+  "admin_panel": [
+    "Django Default",
+    "django-grappelli",
+    "django-baton",
+    "django-jazzmin"
+  ],
   "deps_manager": ["pip", "poetry", "conda", "other", "None"],
   "setup_env": ["y", "n"],
   "_copy_without_render": ["staticfiles/*"]

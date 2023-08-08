@@ -21,6 +21,12 @@ ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=['*'])
 INSTALLED_APPS = [
 {% if cookiecutter.admin_panel == 'django-grappelli' %}
     "grappelli",
+{% elif cookiecutter.admin_panel == 'django-baton' %}
+    "baton",
+{% elif cookiecutter.admin_panel == 'django-simpleui' %}
+    "simpleui",
+{% elif cookiecutter.admin_panel == 'django-jazzmin' %}
+    "jazzmin",
 {% endif %}
     "django.contrib.admin",
     "django.contrib.auth",
@@ -29,6 +35,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     #
+{% if cookiecutter.admin_panel == 'django-baton' %}
+    "baton.autodiscover",
+{% endif %}
 {% if cookiecutter.framework == 'Django + FastAPI' %}
     "apps.polls.apps.PollsConfig",
 {% endif %}
