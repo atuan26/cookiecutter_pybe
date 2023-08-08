@@ -1,3 +1,5 @@
+dev:
+	docker-compose up
 {% if cookiecutter.framework == 'FastAPI' %}
 SHELL := /bin/bash
 
