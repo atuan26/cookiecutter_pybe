@@ -1,0 +1,38 @@
+version: "3"
+
+services:
+  db:
+    image: mariadb:10.11
+    ports:
+      - "23306:3306"
+    env_file:
+      - .env
+    volumes:
+      - db_data:/var/lib/mysql
+
+  api:
+    build:
+      context: .
+      dockerfile: ./.docker/Dockerfile
+    working_dir: /app
+    volumes:
+      - .:/app
+      - /tmp/app/mysqld:/run/mysqld
+    ports:
+      - "8000:8000"
+    command: bash -c "sleep 3 && python main.py migrate && python main.py runserver 0.0.0.0:8000"
+    restart: unless-stopped
+    depends_on:
+      - db
+
+  phpmyadmin:
+    image: phpmyadmin
+    volumes:
+      - ./docker/php-phpmyadmin.ini:/usr/local/etc/php/conf.d/php-phpmyadmin.ini
+    env_file:
+      - .env
+    ports:
+      - 20080:80
+
+volumes:
+  db_data:

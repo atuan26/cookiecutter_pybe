@@ -73,16 +73,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "config.wsgi.application"
 
-
-import dj_database_url
-
 DATABASES = {
-    "default": dj_database_url.config(
-        # conn_max_age=600,
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': env('MYSQL_DATABASE'),
+        'USER': env('MYSQL_USER'),
+        'PASSWORD': env('MYSQL_PASSWORD'),
+        'HOST': env('MYSQL_SERVER')
+    }
 }
-# DATABASES["default"].update({'OPTIONS': {'charset': 'utf8mb4'}})
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {
